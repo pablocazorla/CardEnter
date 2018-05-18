@@ -1,0 +1,96 @@
+<!doctype HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Card Enter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+  <!-- CSS -->
+  <link type="text/css" rel="stylesheet" href="css/reset.css">
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="car-enter">
+    <a href="" data-bind="click:showEnterJSON">Enter JSON</a>
+    <div class="enter-json" data-bind="visible:enterJSONvisible">
+      <textarea cols="30" rows="20" data-bind="textInput:enterJSON"></textarea>
+      <button class="primary" data-bind="click:enterJSONacc">Enter JSON</button>
+      <a href="" data-bind="click:hideEnterJSON">Cancel</a>
+    </div>
+    <div id="list">
+      <table>
+        <thead>
+          <tr data-bind="foreach: columns">
+            <th data-bind="text:tcolum"></th>
+          </tr>
+        </thead>
+        <tbody data-bind="foreach: table">
+          <tr data-bind="foreach: tr">
+            <td data-bind="text:td"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="card">
+      <div data-bind="foreach: listModel">
+        <div class="inp-cont">
+          <label for="" data-bind="text:label"></label>
+          <div data-bind="if: isText">        
+            <input type="text" value="" data-bind="textInput:val">
+          </div>
+          <div data-bind="if: isSelect">        
+            <select  data-bind="textInput:val,foreach: optionsData">
+              <option value="" data-bind="value:opVal,text:opVal"></option>
+            </select>
+          </div>
+          <div data-bind="if: isNumber">        
+            <input type="number" value="" data-bind="textInput:val,attr:{min:min,max:max}">
+          </div>
+          <div  data-bind="if: isSelectNumber">
+            <div class="selec-number clearfix">
+              <div class="selec-number-c1">
+                <textarea rows="2" data-bind="textInput:val"></textarea>
+                <a href="" class="small" data-bind="click:clear">clear</a> 
+              </div>
+              <div class="selec-number-c2">
+                <input type="number" value="" data-bind="textInput:num,attr:{min:min,max:max}">
+              </div>
+              <div class="selec-number-c3">
+                <select  data-bind="textInput:op,foreach: optionsData">
+                  <option value="" data-bind="value:opVal,text:opVal"></option>
+                </select>
+                <div class="check"><input type="checkbox" data-bind="checked:inProduction"/> in production (circle)</div>
+                
+                <button data-bind="click:addSelNum">Add</button>
+              </div>            
+            </div>
+          </div>
+
+          <div  data-bind="if: isTextarea">
+            <div class="textarea-cont clearfix">
+              <div class="ta-c1">
+                <textarea rows="4" data-bind="textInput:val"></textarea>
+                <a href="" class="small" data-bind="click:clear">clear</a> 
+              </div>
+              <div class="ta-c2" data-bind="foreach:resources">               
+                <button data-bind="text:res,click:addResource"></button>
+              </div>            
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="inp-cont">
+        <button  class="primary" data-bind="click:add">Add</button>
+      </div>
+    </div>
+  </div> 
+
+  <script type="text/javascript" src="js/libs/knockout.min.js"></script>
+  <script type="text/javascript" src="js/utils.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="js/vm.js"></script>
+  
+</body>
+</html>
