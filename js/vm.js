@@ -30,7 +30,7 @@
 			});
 		}
 
-		vm.resources = ['gold','stone','food','culture','stability','militar','PV','worker','architect'].map(s => {
+		vm.resources = ['gold','stone','food','culture','militar','attack','stability','PV','worker','architect'].map(s => {
 			return {
 				res:s,
 				addResource: () => {
@@ -40,6 +40,11 @@
 			};
 		});
 
+
+		vm.addNewLine = () => {
+			var txt = vm.val().trim() + '|';
+			vm.val(txt);
+		};
 		
 
 

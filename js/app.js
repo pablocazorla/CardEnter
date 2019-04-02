@@ -1,5 +1,5 @@
 // APP
-var resources = ['gold','stone','food','culture','stability','militar','PV','worker'];
+var resources = ['gold','stone','food','culture','stability','militar','attack','PV','worker'];
 
 var blueCardsModel = {
 	inputs: [
@@ -315,5 +315,136 @@ var brownCardsModel = {
 	}
 };
 
+var orangeCardsModel = {
+	inputs: [
+		{
+			name: 'history',
+			label: 'History moment',
+			type: 'text'
+		},
+		{
+			name: 'title',
+			label: 'Title',
+			type: 'text'
+		},
+		{
+			name: 'text',
+			label: 'Text',
+			type: 'textarea'
+		},
+		{
+			name: 'reward',
+			label: 'Reward',
+			type: 'selectNumber',
+			options: resources,
+			min: -9,
+			max: 9
+		},		
+		{
+			name: 'age',
+			label: 'Age',
+			type: 'number',
+			min: 0,
+			max: 4
+		}
+	],
+	render: (o) => {
+		var s = {
+			...o
+		};
+		s.color = 'orange';
+		s.title = Utils.capitalize(o.title);
+
+		s.image = Utils.toUrl(o.title);
+
+		return s;
+	},
+	toTable: (o) => {
+		var tr = [];
+
+		var order = ['history', 'title', 'text', 'reward', 'age'];
+
+		order.forEach(ord => {
+			tr.push({
+				td: o[ord]
+			});
+		});
+		return {tr};
+	}
+};
+
+var greenCardsModel = {
+	inputs: [
+		{
+			name: 'history',
+			label: 'History moment',
+			type: 'text'
+		},
+		{
+			name: 'title',
+			label: 'Title',
+			type: 'text'
+		},
+		{
+			name: 'minMilitary',
+			label: 'Minimal Military',
+			type: 'number',
+			min: 0,
+			max: 30
+		},
+		{
+			name: 'pv',
+			label: 'PV',
+			type: 'number',
+			min: 0,
+			max: 12
+		},
+		{
+			name: 'reward',
+			label: 'Reward',
+			type: 'selectNumber',
+			options: resources,
+			min: -9,
+			max: 9
+		},
+		{
+			name: 'text',
+			label: 'Text',
+			type: 'textarea'
+		},
+		{
+			name: 'age',
+			label: 'Age',
+			type: 'number',
+			min: 0,
+			max: 4
+		}
+	],
+	render: (o) => {
+		var s = {
+			...o
+		};
+		s.color = 'green';
+		s.title = Utils.capitalize(o.title);
+
+		s.image = Utils.toUrl(o.title);
+
+		return s;
+	},
+	toTable: (o) => {
+		var tr = [];
+
+		var order = ['history', 'title','minMilitary', 'pv', 'reward', 'text','age'];
+
+		order.forEach(ord => {
+			tr.push({
+				td: o[ord]
+			});
+		});
+		return {tr};
+	}
+};
+
+
 //
-var modelData = brownCardsModel;
+var modelData = greenCardsModel;

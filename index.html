@@ -50,8 +50,8 @@
           <div  data-bind="if: isSelectNumber">
             <div class="selec-number clearfix">
               <div class="selec-number-c1">
-                <textarea rows="2" data-bind="textInput:val"></textarea>
-                <a href="" class="small" data-bind="click:clear">clear</a> 
+                <textarea rows="2" data-bind="textInput:val"></textarea>                
+                <button data-bind="click:clear">clear</button>
               </div>
               <div class="selec-number-c2">
                 <input type="number" value="" data-bind="textInput:num,attr:{min:min,max:max}">
@@ -71,7 +71,8 @@
             <div class="textarea-cont clearfix">
               <div class="ta-c1">
                 <textarea rows="4" data-bind="textInput:val"></textarea>
-                <a href="" class="small" data-bind="click:clear">clear</a> 
+                <button data-bind="click:clear">clear</button>
+                <a href="" class="small" data-bind="click:addNewLine">New Line</a>
               </div>
               <div class="ta-c2" data-bind="foreach:resources">               
                 <button data-bind="text:res,click:addResource"></button>
